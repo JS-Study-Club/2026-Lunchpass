@@ -1,0 +1,66 @@
+.Overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+}
+.logout-mes {
+  font-size: 18px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 70%;
+}
+
+.logout-con {
+  background-color: #f9f9ff;
+  width: 320px;
+  height: 168px;
+  border-radius: 10px;
+  padding: 16px;
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cancle {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 137px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9e9e9;
+  color: #7f7f7f;
+  font-weight: 500;
+  border: none;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 137px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  background-color: #4566de;
+  color: #f9f9ff;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+}
