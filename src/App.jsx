@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './Ticket_success.css';
-import Menu from './Menu.jsx';
 import Ticket_success from './Ticket_success.jsx';
 import Ticket_fail from './Ticket_fail.jsx';
 

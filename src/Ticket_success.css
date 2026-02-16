@@ -25,19 +25,19 @@ a {
   background-color: #fff;
 
   overflow: hidden;
+  user-select: none;
 }
 
 #topBack {
   position: absolute;
-  top: 55px;
+  top: 10%;
   left: 20px;
   z-index: 10;
 }
 
-
 #success {
   position: absolute;
-  top: 36.5%;
+  top: 27.2%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -51,24 +51,24 @@ a {
 #success img {
   width: 80px;
   height: 80px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 #successMesssage {
   height: 27px;
   font-size: 24px;
   font-weight: 600;
   color: #4566DE;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 #subMessage {
   font-size: 14px;
-  color: #000000;
+  color: #7f7f7f;
   font-weight: 400;
 }
 
 #closeSet {
   position: absolute;
-  bottom: 114px; 
+  bottom: 64px; 
   left: 50%;
   transform: translateX(-50%);
   
@@ -77,16 +77,19 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 #closeBtn {
   width: 100%;
-  height: 52px;
-}
-#closeBtn img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height:55px;
+  background-color:#4566de;
+  border-radius:10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f9f9ff;
+  font-size: 17px;
 }
 #closeText {
   font-size: 14px;

@@ -8,6 +8,10 @@ function Menu() {
     <div className="bottom">
       <nav className="bottom-nav">
         
+        {/* <Link to="/" ><img className="nav-item" src={homeIcon} /></Link>
+        <Link to="/" ><img className="nav-center" src={ticket} /></Link>
+        <Link to="/" ><img className="nav-item" src={mydata} /></Link> */}
+
         <img className="nav-item" src={homeIcon} />
         <img className="nav-center" src={ticket} />
         <img className="nav-item" src={mydata} />
