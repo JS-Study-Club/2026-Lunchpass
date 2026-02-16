@@ -4,12 +4,12 @@ import SuccessIcon from "./assets/success_icon.svg";
 import BackButton from "./assets/back_button.svg";
 
 import "./Ticket_success.css";
-import { useFormState } from 'react-dom';
 
 function Ticket_success() {
-    let [date, setDate] = useState(0);
+    let [day, setDay] = useState("월");
+    let [date, setDate] = useState("오늘({day})");
 
-    
+
     return (
         <div className='Main'>
             <Link to="/fail"><BackBtn/></Link>
