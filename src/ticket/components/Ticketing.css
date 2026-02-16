@@ -1,0 +1,163 @@
+/* 공공 */
+* {
+  font-family: 'Pretendard';
+  margin: 0px;
+  padding: 0;
+}
+body {
+  background-color: #0000001a;
+}
+#ticketing {
+  width: 390px;
+  height: 844px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+}
+.main-nav {
+  width: 90px;
+  height: 21px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  left: 20px;
+}
+.btn {
+  width: 350px;
+  height: 60px;
+  padding: 16px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  border-radius: 10px;
+  border: 1px solid #e9e9e9;
+  background: #fff;
+  box-shadow: 0 0 5px 0 rgba(116, 116, 116, 0.2);
+}
+.btn span:first-child {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+.btn span:last-child {
+  color: #7f7f7f;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+.second-btn {
+  position: relative;
+  top: 9px;
+}
+.select_btn {
+  border: 2px solid #7691f5;
+  background: #d7e7ff;
+}
+.select_text {
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* header */
+header {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 130px;
+}
+.back-btn {
+  width: 17px;
+  height: 32px;
+  position: absolute;
+  top: 56px;
+  left: 20px;
+  border: none;
+  background-color: #fff;
+}
+.info-button {
+  width: 110px;
+  height: 32px;
+  border-radius: 17.98px;
+  border: none;
+  background-color: #4566de;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 56px;
+  left: 260px;
+}
+.info-button img {
+  width: 15.817938804626465px;
+  height: 15.804304122924805px;
+  position: relative;
+  margin-left: 9.09px;
+}
+.white-text {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #ffffff;
+  text-align: center;
+  margin-left: 7px;
+}
+
+/* main_date-section */
+main {
+  display: flex;
+  flex-direction: column;
+}
+.date-section {
+  height: 201px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.date-nav img {
+  width: 21px;
+  height: 21px;
+}
+
+.date-main {
+  position: relative;
+  top: 12px;
+  left: 20px;
+}
+
+/* main_time-section */
+.time-section {
+  height: 353px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* footer */
+footer button {
+  display: flex;
+  width: 350px;
+  height: 52px;
+  padding: 8px 110px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  position: relative;
+  left: 20px;
+  border-radius: 10px;
+  border: none;
+  background: #4566de;
+}
+.disableTicket {
+  background: #a6a6a6;
+}
