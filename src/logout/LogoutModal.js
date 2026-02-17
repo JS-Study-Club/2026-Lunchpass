@@ -1,7 +1,9 @@
 import "./LogoutModal.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ReactDOM from "react-dom";
 export const LogoutModal = ({setOpenLog }) => {
-  return (
+  const navigate = useNavigate();
+  return ReactDOM.createPortal(
     <div className="Overlay">
       <div className="logout-con">
         <span className="logout-mes">로그아웃 하시겠습니까?</span>
@@ -15,13 +17,15 @@ export const LogoutModal = ({setOpenLog }) => {
         </button>
         <button className="logout" type="button"
           onClick={() => {
-             <Link to="/"></Link>;
+             navigate("/");
+             setOpenLog(false);
           }}
         >
           로그아웃
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

@@ -1,8 +1,13 @@
 import "./Singup.css";
-import { Link } from "react-router-dom";
+import { Link,} from "react-router-dom";
+import { useState } from "react";
 import { ReactComponent as Backbutton } from "./backbutton.svg";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
   return (
     <div className="App">
       <div className="Signcon">
@@ -36,15 +41,16 @@ function Signup() {
             </div>
             <div className="name-area">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="pw"
                 id="pw"
                 autoCapitalize="off"
                 required
               />
               <label htmlFor="pw">비밀번호</label>
-              <div className="eyes">
-                <FaEye></FaEye>
+              <div className="eyes"
+              onClick={togglePassword}>
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
             <div className="type-box">

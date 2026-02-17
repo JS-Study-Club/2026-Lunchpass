@@ -1,15 +1,15 @@
 import './App.css';
-import Login from './Login';
-import Signup from './Signup';
-import Mydata from './Mydata';
+import Login from './LoginPage/Login';
+import Signup from './SignupPage/Signup';
+import Mydata from './MydataPage/Mydata';
 import {Routes, Route} from "react-router-dom";
 function App() {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Login/>}/>
-        <Route path='/signup' element={<Signup/>}/>
-        <Route path='/mydata' element={<Mydata/>}/>
+        <Route path='/Signup' element={<Signup/>}/>
+        <Route path='/Mydata' element={<Mydata/>}/>
       </Routes>
     </div>
   );

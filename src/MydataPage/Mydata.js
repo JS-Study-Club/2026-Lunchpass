@@ -1,10 +1,10 @@
 import "./Mydata.css";
 import { useState } from "react";
-import Menu from "./bottommenu/Menu";
+import Menu from "../bottommenu/Menu";
 import { ReactComponent as LogoutIcon } from "./logout.svg";
 import { ReactComponent as User } from "./user.svg";
 import banner from "./banner.svg";
-import LogoutModal from "./logout/LogoutModal";
+import LogoutModal from "../logout/LogoutModal";
 function Mydata() {
   const [openLog, setOpenLog] = useState(false);
   return (
