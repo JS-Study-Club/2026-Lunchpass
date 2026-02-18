@@ -22,8 +22,35 @@ a {
   
   display: flex;
   flex-direction: column;
-  background-color: #f9f9ff;
+  background-color: #F9F9FF;
 
   overflow: hidden;
   user-select: none;
+}
+
+#loading {
+  position: absolute;
+  top: 42.9%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  margin: 0;
+}
+#loadingMessage {
+  height: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #4566DE;
+  margin-top: 20px;
+}
+#loadingSubMessage {
+  margin-top: 11px;
+  font-size: 14px;
+  color: #757580;
+  font-weight: 300;
 }

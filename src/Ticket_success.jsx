@@ -35,7 +35,7 @@ function Ticket_success() {
                 </div>
             </div>
             <div id='closeSet'>
-                <Link to="/fail" id='closeBtn'><span>닫기</span></Link>
+                <Link to="/loading" id='closeBtn'><span>닫기</span></Link>
                 <Link to="/myticket" id='closeText'><span>내 티켓으로 이동</span></Link>
             </div>
         </div>

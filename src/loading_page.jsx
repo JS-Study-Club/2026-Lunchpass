@@ -8,19 +8,26 @@ import "./Loading_page.css";
 
 function Loading_page() {
     return (
-        <div id='Main'>
-            <Link to="/fail"><BackBtn/></Link>
+        <div className='Main'>
+            <BackBtn/>
+            <div id='loading'>
+                <img src={loading_icon} alt="로딩아이콘" id='loadingIcon'/>
+                <span id='loadingMessage'>예매 화면을 불러오는 중입니다</span>
+                <span id='loadingSubMessage'>잠시만 기다려주세요</span>
+            </div>
         </div>
     );
 }
 
 function BackBtn() {
     return (
-        <img src={BackButton} alt="뒤로가기버튼" id='topBack'
-        style={{
-        position: 'absolute',
-        top: '9%',
-        left: '20px'}}/>
+        <Link to="/" style={{
+            position: 'absolute',
+            top: '10%',
+            left: '20px',
+            zIndex: '10'}}>
+            <img src={BackButton} alt="뒤로가기버튼"/>
+        </Link>
     );
 }
 
