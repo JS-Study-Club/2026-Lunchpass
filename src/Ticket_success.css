@@ -22,7 +22,7 @@ a {
   
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #f9f9ff;
 
   overflow: hidden;
   user-select: none;
@@ -30,7 +30,7 @@ a {
 
 #success {
   position: absolute;
-  top: 27.2%;
+  top: 27%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -51,7 +51,7 @@ a {
   font-size: 24px;
   font-weight: 600;
   color: #4566DE;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 #subMessage {
   font-size: 14px;
@@ -97,7 +97,7 @@ a {
 
 #closeSet {
   position: absolute;
-  bottom: 64px; 
+  bottom: 7.6%;
   left: 50%;
   transform: translateX(-50%);
   
