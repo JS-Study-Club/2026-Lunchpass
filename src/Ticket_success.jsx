@@ -8,14 +8,14 @@ import "./Ticket_success.css";
 
 function Ticket_success() {
     const [date, setDate] = useState('날짜');
-    const [time, setTime] = useState('시간대');   
+    const [time, setTime] = useState('시간대');
 
     useEffect(() => {setDate(todayDOW())},[]);
     
 
     return (
         <div className='Main'>
-            <Link to="/fail"><BackBtn/></Link>
+            <BackBtn/>
             <div id='success'>
                 <img src={SuccessIcon} alt="성공아이콘" id='successIcon'/>
                 <span id='successMesssage'>예매 성공!</span>
@@ -44,11 +44,13 @@ function Ticket_success() {
 
 function BackBtn() {
     return (
-        <img src={BackButton} alt="뒤로가기버튼" id='topBack'
-        style={{
-        position: 'absolute',
-        top: '9%',
-        left: '20px'}}/>
+        <Link to="/fail" style={{
+            position: 'absolute',
+            top: '10%',
+            left: '20px',
+            zIndex: '10'}}>
+            <img src={BackButton} alt="뒤로가기버튼"/>
+        </Link>
     );
 }
 
