@@ -44,7 +44,7 @@ function Ticket_success() {
 
 function BackBtn() {
     return (
-        <Link to="/fail" style={{
+        <Link to="/waiting" style={{
             position: 'absolute',
             top: '10%',
             left: '20px',

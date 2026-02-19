@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 import loading_icon from "./assets/loading_icon.svg";
 import BackButton from "./assets/back_button.svg";

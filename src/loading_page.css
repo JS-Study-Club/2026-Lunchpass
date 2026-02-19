@@ -46,11 +46,13 @@ a {
   font-size: 20px;
   font-weight: 600;
   color: #4566DE;
+
   margin-top: 20px;
 }
 #loadingSubMessage {
   margin-top: 11px;
+  
   font-size: 14px;
   color: #757580;
-  font-weight: 300;
+  font-weight: 400;
 }
