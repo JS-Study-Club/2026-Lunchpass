@@ -1,41 +1,53 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import BackButton from '../Assets/Back.svg';
-import Have from "../Assets/Have.svg"
+import Have from "../Assets/Have.svg";
+
+import View_qr from "../Components/View_qr.jsx";
 
 export default function HaveTicket(){
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
 
     return(
-        <MyTicketContainer>
-            <MyTicketInformationContainer>
-                <img src={Have} style={{
-                    marginRight: 10,
-                    display: "inline-block"
-                }}/>
-                <MyTicketInformation>보유한 티켓</MyTicketInformation> 
-                <Back src={BackButton} onClick={() => navigate("/myticket/haveticketpage")}></Back>
-            </MyTicketInformationContainer>
-            <MyTicketBoxContainer>
-                <MyTicketBoxFirst>
-                    <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                    <QR>QR 보기</QR>
-                </MyTicketBoxFirst>
-                <MyTicketBoxMiddle>
-                    <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                    <QR>QR 보기</QR>
-                </MyTicketBoxMiddle>
-                <MyTicketBoxMiddle>
-                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                    <QR>QR 보기</QR>
-                </MyTicketBoxMiddle>
-                <MyTicketBoxLast>
-                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                    <QR>QR 보기</QR>
-                </MyTicketBoxLast>
-            </MyTicketBoxContainer>
-        </MyTicketContainer>
-    ) 
+        <>
+            <MyTicketContainer>
+                <MyTicketInformationContainer>
+                    <img src={Have} style={{
+                        marginRight: 10,
+                        display: "inline-block"
+                    }}/>
+                    <MyTicketInformation>보유한 티켓</MyTicketInformation> 
+                    <Back src={BackButton} onClick={() => navigate("/myticket/haveticketpage")}></Back>
+                </MyTicketInformationContainer>
+                <MyTicketBoxContainer>
+                    <MyTicketBoxFirst>
+                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
+                        <QR onClick={() => { setIsOpen(true) }}>QR 보기</QR>
+                    </MyTicketBoxFirst>
+                    <MyTicketBoxMiddle>
+                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
+                        <QR>QR 보기</QR>
+                    </MyTicketBoxMiddle>
+                    <MyTicketBoxMiddle>
+                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
+                        <QR>QR 보기</QR>
+                    </MyTicketBoxMiddle>
+                    <MyTicketBoxLast>
+                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
+                        <QR>QR 보기</QR>
+                    </MyTicketBoxLast>
+                </MyTicketBoxContainer>
+            </MyTicketContainer>
+            {
+                isOpen && (
+                    <View_qr />
+                )
+            }
+        </>
+        
+    );
 }
 
 const MyTicketContainer = styled.div`
