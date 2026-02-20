@@ -8,14 +8,14 @@ import Waiting_page from './Waiting_page.jsx';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Ticket_success/>}/>
         <Route path="/fail" element={<Ticket_fail/>}/>
         <Route path="/loading" element={<Loading_page/>}/>
         <Route path="/waiting" element={<Waiting_page/>}/>
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 
