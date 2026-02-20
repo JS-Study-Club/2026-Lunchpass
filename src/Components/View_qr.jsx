@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 import QR from "../Assets/QR_source.svg";
 
-function View_qr() {
-    const [isOpen, setIsOpen] = useState(false);
+function View_qr({setIsOpen}) {
 
     return (
         <>

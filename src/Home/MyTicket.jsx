@@ -42,7 +42,7 @@ export default function HaveTicket(){
             </MyTicketContainer>
             {
                 isOpen && (
-                    <View_qr />
+                    <View_qr setIsOpen={setIsOpen}/>
                 )
             }
         </>
