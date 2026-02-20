@@ -12,7 +12,6 @@ function Waiting_page() {
 
     return (
         <div className='Main'>
-            <button onClick={() => setWatingP(prev => Math.min(prev + 1, totalP))}>증가</button>
             <BackBtn/>
             <div id='waiting'>
                 <img src={hourglass} alt="hourglass" id='hourglass' />
