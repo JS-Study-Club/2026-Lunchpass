@@ -14,9 +14,14 @@ export default function CancelTicketPage(){
             </BackContainer>
             <Category/>
             <HaveCancelTicket Selection={"Cancel"}/>
+            <BottomSpacer />
         </>
     ) 
 }
+
+const BottomSpacer = styled.div`
+  height: 80px; // Menu의 높이와 동일하게 설정
+`;
 
 const BackContainer = styled.span`
     heigth: 21px;

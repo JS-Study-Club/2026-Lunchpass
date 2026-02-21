@@ -22,9 +22,14 @@ export default function MyTicketPage(){
             }}>
                 <MyTicket Information={"취소한 티켓"} URL={"/myticket/cancelticketpage"} Selection={"Cancel"} IMG={"/assets/img/Cancel.svg"}/>
             </div>
+            <BottomSpacer />
         </>
     )
 }
+
+const BottomSpacer = styled.div`
+  height: 80px; // Menu의 높이와 동일하게 설정
+`;
 
 const BackContainer = styled.span`
     heigth: 21px;
