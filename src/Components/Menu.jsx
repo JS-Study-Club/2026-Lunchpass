@@ -1,7 +1,7 @@
 import "../Styles/Menu.css";
-import homeIcon from '../Assets/home.svg';
-import ticket from '../Assets/ticket.svg';
-import mydata from '../Assets/mydata.svg';
+import homeIcon from '/assets/img/home.svg';
+import ticket from '/assets/img/ticket.svg';
+import mydata from '/assets/img/mydata.svg';
 export default function Menu() {
   return (
     <>

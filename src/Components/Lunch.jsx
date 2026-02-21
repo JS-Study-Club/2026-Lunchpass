@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import lunch from "../Assets/Lunch.svg"
+import lunch from "/assets/img/Lunch.svg"
 import { useNavigate } from "react-router-dom";
 
 export default function Lunch(){

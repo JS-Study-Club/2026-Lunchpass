@@ -1,35 +1,35 @@
 import styled from "styled-components";
-import Cancel from "../Assets/Cancel.svg"
-import BackButton from '../Assets/Back.svg';
 import { useNavigate } from "react-router-dom";
+import BackButton from "/assets/img/Back.svg"
 
-export default function CancelTicket(){
+export default function MyTicket({Information, URL, Selection, IMG}){
     const navigate=useNavigate()
-
     return(
         <MyTicketContainer>
             <MyTicketInformationContainer>
-                <img src={Cancel} style={{
+                <img src={IMG} style={{
                     marginRight: 10,
-                    display: "inline-block",
+                    display: "inline-block"
                 }}/>
-                <MyTicketInformation>취소한 티켓</MyTicketInformation> 
-                <Back src={BackButton} onClick={() => navigate("/myticket/cancelticketpage")}></Back>
+                <MyTicketInformation>{Information}</MyTicketInformation>
+                <Back src={BackButton} onClick={() => navigate(URL)}></Back>
             </MyTicketInformationContainer>
             <MyTicketBoxContainer>
                 <MyTicketBoxFirst>
                     <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                    <Retrieve>회수 요청</Retrieve>
+                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                 </MyTicketBoxFirst>
                 <MyTicketBoxMiddle>
                     <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                    <Retrieve>회수 요청</Retrieve>
+                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                 </MyTicketBoxMiddle>
                 <MyTicketBoxMiddle>
-                    <MyTicketCancelText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketCancelText>
+                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
+                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                 </MyTicketBoxMiddle>
                 <MyTicketBoxLast>
-                    <MyTicketCancelText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketCancelText>
+                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
+                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                 </MyTicketBoxLast>
             </MyTicketBoxContainer>
         </MyTicketContainer>
@@ -37,7 +37,6 @@ export default function CancelTicket(){
 }
 
 const MyTicketContainer = styled.div`
-    margin: 26px 0px 0px 0px;
     width: 350px;
 `
 const Back = styled.img`
@@ -57,7 +56,7 @@ const MyTicketInformationContainer=styled.div`
     height: 21px;
 `
 const MyTicketInformation = styled.span`
-    margin-right:216px;
+    margin-right:226px;
     font-family: Pretendard;
     font-size: 16px;
     font-weight: normal;
@@ -110,20 +109,10 @@ const MyTicketText=styled.span`
     width: 106px;
 `
 
-const Retrieve=styled.span`
+const QR=styled.span`
     margin:0;
     font-family: Pretendard;
     font-size: 14px;
     font-weight: normal;
     color: #4566DE
-`
-
-const MyTicketCancelText=styled.span`
-    margin-right:148px;
-    margin:0;
-    color: #A6A6A6;
-    font-family: Pretendard;
-    font-size: 14px;
-    font-weight: normal;
-    margin:15px 0 16px 0px;
 `

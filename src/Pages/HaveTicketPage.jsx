@@ -1,9 +1,30 @@
-import Back from "../HaveTicket/Back.jsx"
+import styled from "styled-components";
+import BackImg from "/assets/img/Back2.svg"
+import { useNavigate } from "react-router-dom";
+import Category from "../Components/Category.jsx"
 
 export default function HaveTicketPage(){
-    return (
+    const navigate=useNavigate()
+
+    return(
         <>
-            <Back/>
+            <BackContainer>
+                <BackButton src={BackImg} onClick={() => navigate("/myticket")}/>보유한 티켓
+            </BackContainer>
+            <Category />
         </>
-    )
+    ) 
 }
+
+const BackContainer = styled.span`
+    heigth: 21px;
+    display: flex;
+    align-items: center;
+    font-family: Pretendard;
+    font-size: 18px;
+    color: #1A1A1F;
+    font-weight: 600;
+`
+const BackButton = styled.img`
+    margin: 2px 8px 2px 0;
+`
