@@ -1,5 +1,6 @@
 import styled from "styled-components";
 // import { useState } from 'react';
+import NoneTicket from "/assets/img/NoneTicket.svg"
 
 export default function HaveCancelTicket({Selection}){
     return(
@@ -20,6 +21,8 @@ export default function HaveCancelTicket({Selection}){
                 <Ticket>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</Ticket>
                 <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
             </TicketBox>
+            {/* <NoneTicketContainer src={NoneTicket} /> */}
+            {/* 티켓 없을 때 */}
         </TicketBoxContainer>
     )
 }
@@ -44,4 +47,8 @@ const Ticket=styled.span`
 
 const QR=styled.span`
     color: #4566DE;
+`
+
+const NoneTicketContainer=styled.img`
+    margin: 189px 121px 0 121px;
 `

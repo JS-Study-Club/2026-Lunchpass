@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import BackButton from "/assets/img/Back.svg"
+import NoneTicket from "/assets/img/NoneTicket.svg"
 
 import View_qr from "../Components/View_qr.jsx";
 
@@ -37,6 +38,8 @@ export default function MyTicket({Information, URL, Selection, IMG}){
                         <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
                         <QR onClick={() => setIsOpen(true)}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                     </MyTicketBoxLast>
+                    {/* <NoneTicketContainer src={NoneTicket} /> */}
+                    {/* 티켓 없을 때 */}
                 </MyTicketBoxContainer>
             </MyTicketContainer>
             {
@@ -60,6 +63,7 @@ const MyTicketBoxContainer=styled.div`
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0px 0px 5px 0px rgba(116, 116, 116, 0.2);
     width: 350px;
+    height: 213px;
 `
 
 const MyTicketInformationContainer=styled.div`
@@ -128,4 +132,8 @@ const QR=styled.span`
     font-size: 14px;
     font-weight: normal;
     color: #4566DE
+`
+
+const NoneTicketContainer=styled.img`
+    margin: 59px 121px 0 121px;
 `
