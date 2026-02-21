@@ -1,39 +1,52 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import BackButton from "/assets/img/Back.svg"
 
+import View_qr from "../Components/View_qr.jsx";
+
 export default function MyTicket({Information, URL, Selection, IMG}){
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+
     return(
-        <MyTicketContainer>
-            <MyTicketInformationContainer>
-                <img src={IMG} style={{
-                    marginRight: 10,
-                    display: "inline-block"
-                }}/>
-                <MyTicketInformation>{Information}</MyTicketInformation>
-                <Back src={BackButton} onClick={() => navigate(URL)}></Back>
-            </MyTicketInformationContainer>
-            <MyTicketBoxContainer>
-                <MyTicketBoxFirst>
-                    <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                </MyTicketBoxFirst>
-                <MyTicketBoxMiddle>
-                    <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                </MyTicketBoxMiddle>
-                <MyTicketBoxMiddle>
-                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                </MyTicketBoxMiddle>
-                <MyTicketBoxLast>
-                    <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                    <QR>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                </MyTicketBoxLast>
-            </MyTicketBoxContainer>
-        </MyTicketContainer>
-    ) 
+        <>
+            <MyTicketContainer>
+                <MyTicketInformationContainer>
+                    <img src={IMG} style={{
+                        marginRight: 10,
+                        display: "inline-block"
+                    }}/>
+                    <MyTicketInformation>{Information}</MyTicketInformation>
+                    <Back src={BackButton} onClick={() => navigate(URL)}></Back>
+                </MyTicketInformationContainer>
+                <MyTicketBoxContainer>
+                    <MyTicketBoxFirst>
+                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
+                        <QR onClick={() => setIsOpen(true)}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
+                    </MyTicketBoxFirst>
+                    <MyTicketBoxMiddle>
+                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
+                        <QR onClick={() => setIsOpen(true)}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
+                    </MyTicketBoxMiddle>
+                    <MyTicketBoxMiddle>
+                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
+                        <QR onClick={() => setIsOpen(true)}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
+                    </MyTicketBoxMiddle>
+                    <MyTicketBoxLast>
+                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
+                        <QR onClick={() => setIsOpen(true)}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
+                    </MyTicketBoxLast>
+                </MyTicketBoxContainer>
+            </MyTicketContainer>
+            {
+                isOpen && (
+                    <View_qr setIsOpen={setIsOpen}/>
+                )
+            }
+        </>
+        
+    );
 }
 
 const MyTicketContainer = styled.div`

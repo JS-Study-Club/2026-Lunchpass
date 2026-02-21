@@ -3,7 +3,7 @@
   bottom: 34px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000; /* 콘텐츠보다 위에 오도록 설정 */
+  z-index: 10; /* 콘텐츠보다 위에 오도록 설정 */
 
   width: 100%;
   max-width: 390px;
