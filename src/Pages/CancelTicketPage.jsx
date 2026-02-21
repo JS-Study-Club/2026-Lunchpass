@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BackImg from "/assets/img/Back2.svg"
 import { useNavigate } from "react-router-dom";
 import Category from "../Components/Category.jsx"
+import HaveCancelTicket from "../Components/HaveCancelTicket.jsx"
 
 export default function CancelTicketPage(){
     const navigate=useNavigate()
@@ -12,6 +13,7 @@ export default function CancelTicketPage(){
                 <BackButton src={BackImg} onClick={() => navigate("/myticket")}/>취소한 티켓
             </BackContainer>
             <Category/>
+            <HaveCancelTicket Selection={"Cancel"}/>
         </>
     ) 
 }

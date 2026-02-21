@@ -5,17 +5,22 @@ export default function Category(){
     const [activeTab, setActiveTab] = useState('전체');
     const categories=["전체", "조식", "석식"]
     return(
-        <CategoryContainer>
-            {categories.map((tap) => (
-                <CategoryItem
-                    key={tap}
-                    className={activeTab === tap ? "Touched" : ""}
-                    onClick={() => setActiveTab(tap)}
-                >
-                    <CategoryText>{tap}</CategoryText>
-                </CategoryItem>
-            ))}
-        </CategoryContainer>
+        <>
+            <CategoryContainer>
+                {categories.map((tap) => (
+                    <CategoryItem
+                        key={tap}
+                        className={activeTab === tap ? "Touched" : ""}
+                        onClick={() => setActiveTab(tap)}
+                    >
+                        <CategoryText>{tap}</CategoryText>
+                    </CategoryItem>
+                ))}
+            </CategoryContainer>
+            <Line/>
+            
+        </>
+        
     )
 }
 
@@ -45,4 +50,11 @@ const CategoryItem=styled.div`
 `
 const CategoryText=styled.span`
     margin: 0px 11px;
+`
+
+const Line = styled.div`
+    margin: 10px -20px 0 -20px;
+    background-color: #F2F2F8;
+    width: 390px;
+    height: 1px;
 `
