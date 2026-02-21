@@ -17,9 +17,21 @@ export default function Lunch(){
             <BoxContainer>
                 <BreakfastBox>
                     <Text>조식</Text>
+                    <MenuContainer>
+                        <MenuText>맛있는 푸딩</MenuText>
+                        <MenuText>달달한 푸딩</MenuText>
+                        <MenuText>굉장한 푸딩</MenuText>
+                        <MenuText>푸딩</MenuText>
+                    </MenuContainer>
                 </BreakfastBox>
                 <DinnerBox>
                     <Text>석식</Text>
+                    <MenuContainer>
+                        <MenuText>맛있는 푸딩</MenuText>
+                        <MenuText>달달한 푸딩</MenuText>
+                        <MenuText>굉장한 푸딩</MenuText>
+                        <MenuText>푸딩</MenuText>
+                    </MenuContainer>
                 </DinnerBox>
             </BoxContainer>
         </LunchContainer>
@@ -52,19 +64,32 @@ const BreakfastBox=styled.div`
     width: 170px;
     height: 200px;
     background-color: #E9E9E9;
-    border-radius: 10px
+    border-radius: 10px;
+    padding-left:15px;;
 `
 const DinnerBox=styled.div`
     margin-right: 0px;
     width: 170px;
     height: 200px;
     background-color: #E9E9E9;
-    border-radius: 10px
+    border-radius: 10px;
+    padding-left:15px;
 `
 
 const Text=styled.p`
-    margin: 16px 16px 16px 16px;
     font-size: 14px;
     font-family: Pretendard;
-    font-weight: normal;
+    font-weight: 500;
+    color: #1A1A1F;
+`
+const MenuContainer=styled.div`
+    margin-top: 11px;
+`
+
+const MenuText=styled.div`
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-family: Pretendard;
+    font-weight: 400;
+    color: #494950;
 `
