@@ -13,7 +13,6 @@ function View_qr({setIsOpen}) {
                         <CloseBtn onClick={() => setIsOpen(false)}>닫기</CloseBtn>
                         <CancleBtn onClick={() => { setIsOpen("CANCLE");}}>티켓 취소</CancleBtn>
                     </BtnSet>
-                    
                 </ModalContent>
             </Modal>
         </>

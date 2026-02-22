@@ -6,6 +6,7 @@ import NoneTicket from "/assets/img/NoneTicket.svg"
 
 import View_qr from "../Components/View_qr_M.jsx";
 import TicketCancle from "../Components/TicketCancle_M.jsx";
+import Retrieval from "./Retrieval_M.jsx";
 
 export default function MyTicket({Information, URL, Selection, IMG}){
     const navigate = useNavigate();
@@ -51,6 +52,11 @@ export default function MyTicket({Information, URL, Selection, IMG}){
             {
                 isOpen === "VIEW_QR" && (
                     <View_qr setIsOpen={setIsOpen}/>
+                )
+            }
+            {
+                isOpen === "RETRIEVAL" && (
+                    <Retrieval setIsOpen={setIsOpen}/>
                 )
             }
             

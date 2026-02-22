@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
-function TicketCancle({setIsOpen}) {
+function Retrieval({setIsOpen}){
     return (
         <>
             <Modal>
                 <ModalContent>
-                    <MessageSet>
-                        <MainMessage>티켓을 취소 하시겠습니까?</MainMessage>
-                        <SubMessage>다음 예매시간 전까지 회수 요청 할 수 있습니다</SubMessage>
-                    </MessageSet>
-                    
+                    <Message>티켓 회수 요청을 하시겠습니까?</Message>
                     <BtnSet>
                         <CloseBtn onClick={() => setIsOpen(false)}>닫기</CloseBtn>
-                        <CancleBtn onClick={() => {setIsOpen(false); alert("티켓 취소 실행");/*티켓 취소 로직 실행*/}}>티켓 취소</CancleBtn>
+                        <CancleBtn onClick={() => {setIsOpen(false); alert("회수 요청 실행");/*티켓 취소 로직 실행*/}}>티켓 취소</CancleBtn>
                     </BtnSet>
                 </ModalContent>
             </Modal>
@@ -49,39 +45,23 @@ const ModalContent = styled.div`
     width: 320px;
     height: 168px;
 
-    padding: 35px 0 16px 0;
+    padding: 19px 0 16px 0;
 
     background-color: #f9f9ff;
     border-radius: 10px;
 `;
 
-const MessageSet = styled.div`
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 8px 0;
-
-    gap: 6px;
-`;
-const MainMessage = styled.span`
+const Message = styled.span`
     font-family: 'Pretendard';
     font-size: 18px;
     font-weight: 500;
     color: #1a1a1f;
-`;
-const SubMessage = styled.span`
-    font-family: 'Pretendard';
-    font-size: 13px;
-    font-weight: 400;
-    color: #9b9baa;
+
+    padding: 35px;
 `;
 
 const BtnSet = styled.div`
     display: flex;
-
-    margin-top: 16px;
     padding: 0;
 
     gap: 10px;
@@ -117,4 +97,4 @@ const CancleBtn = styled.button`
     color: #f9f9ff;
 `;
 
-export default TicketCancle;
+export default Retrieval;
