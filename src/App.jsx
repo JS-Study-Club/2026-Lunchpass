@@ -10,7 +10,7 @@ export default function App(){
         <BrowserRouter>
             <Routes>
                 <Route element={<Layout />}>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/" element={<HomePage username={"이예지"} commute={"통학"}/>} />
                     <Route path="/myticket" element={<MyTicketPage />} />
                     <Route path="/myticket/cancelticketpage" element={<CancelTicketPage />} />
                     <Route path="/myticket/haveticketpage" element={<HaveTicketPage />} />

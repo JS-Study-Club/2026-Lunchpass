@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import BackButton from '../Assets/Back.svg';
-import Have from "../Assets/Have.svg";
+import BackButton from "/assets/img/Back.svg"
+import NoneTicket from "/assets/img/NoneTicket.svg"
 
 import View_qr from "../Components/View_qr_M.jsx";
 import TicketCancle from "../Components/TicketCancle_M.jsx";
 
-export default function HaveTicket(){
+export default function MyTicket({Information, URL, Selection, IMG}){
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
 
@@ -15,30 +15,32 @@ export default function HaveTicket(){
         <>
             <MyTicketContainer>
                 <MyTicketInformationContainer>
-                    <img src={Have} style={{
+                    <img src={IMG} style={{
                         marginRight: 10,
                         display: "inline-block"
                     }}/>
-                    <MyTicketInformation>보유한 티켓</MyTicketInformation> 
-                    <Back src={BackButton} onClick={() => navigate("/myticket/haveticketpage")}></Back>
+                    <MyTicketInformation>{Information}</MyTicketInformation>
+                    <Back src={BackButton} onClick={() => navigate(URL)}></Back>
                 </MyTicketInformationContainer>
                 <MyTicketBoxContainer>
                     <MyTicketBoxFirst>
                         <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                        <QR onClick={() => { setIsOpen("VIEW_QR"); }}>QR 보기</QR>
+                        <QR onClick={() => { setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL") }}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                     </MyTicketBoxFirst>
                     <MyTicketBoxMiddle>
                         <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                        <QR>QR 보기</QR>
+                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                     </MyTicketBoxMiddle>
                     <MyTicketBoxMiddle>
                         <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                        <QR>QR 보기</QR>
+                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                     </MyTicketBoxMiddle>
                     <MyTicketBoxLast>
                         <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                        <QR>QR 보기</QR>
+                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                     </MyTicketBoxLast>
+                    {/* <NoneTicketContainer src={NoneTicket} /> */}
+                    {/* 티켓 없을 때 */}
                 </MyTicketBoxContainer>
             </MyTicketContainer>
             {
@@ -58,7 +60,6 @@ export default function HaveTicket(){
 }
 
 const MyTicketContainer = styled.div`
-    margin: 38px 0px 0px 0px;
     width: 350px;
 `
 const Back = styled.img`
@@ -69,6 +70,7 @@ const MyTicketBoxContainer=styled.div`
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0px 0px 5px 0px rgba(116, 116, 116, 0.2);
     width: 350px;
+    height: 213px;
 `
 
 const MyTicketInformationContainer=styled.div`
@@ -78,7 +80,7 @@ const MyTicketInformationContainer=styled.div`
     height: 21px;
 `
 const MyTicketInformation = styled.span`
-    margin-right:216px;
+    margin-right:226px;
     font-family: Pretendard;
     font-size: 16px;
     font-weight: normal;
@@ -137,4 +139,8 @@ const QR=styled.span`
     font-size: 14px;
     font-weight: normal;
     color: #4566DE
+`
+
+const NoneTicketContainer=styled.img`
+    margin: 59px 121px 0 121px;
 `

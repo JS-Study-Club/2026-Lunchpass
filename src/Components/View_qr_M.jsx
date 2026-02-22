@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-import QR from "../Assets/QR_source.svg";
-import TicketCancle from "./TicketCancle_M";
+import QR from "/assets/img/QR_source.svg";
 
 function View_qr({setIsOpen}) {
 
