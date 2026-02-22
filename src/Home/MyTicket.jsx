@@ -4,7 +4,8 @@ import { useState } from "react";
 import BackButton from '../Assets/Back.svg';
 import Have from "../Assets/Have.svg";
 
-import View_qr from "../Components/View_qr.jsx";
+import View_qr from "../Components/View_qr_M.jsx";
+import TicketCancle from "../Components/TicketCancle_M.jsx";
 
 export default function HaveTicket(){
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function HaveTicket(){
                 <MyTicketBoxContainer>
                     <MyTicketBoxFirst>
                         <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                        <QR onClick={() => { setIsOpen(true) }}>QR 보기</QR>
+                        <QR onClick={() => { setIsOpen("VIEW_QR"); }}>QR 보기</QR>
                     </MyTicketBoxFirst>
                     <MyTicketBoxMiddle>
                         <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
@@ -41,10 +42,16 @@ export default function HaveTicket(){
                 </MyTicketBoxContainer>
             </MyTicketContainer>
             {
-                isOpen && (
+                isOpen === "CANCLE" && (
+                    <TicketCancle setIsOpen={setIsOpen} />
+                )
+            }
+            {
+                isOpen === "VIEW_QR" && (
                     <View_qr setIsOpen={setIsOpen}/>
                 )
             }
+            
         </>
         
     );
