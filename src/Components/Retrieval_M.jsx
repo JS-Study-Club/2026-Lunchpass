@@ -8,7 +8,7 @@ function Retrieval({setIsOpen}){
                     <Message>티켓 회수 요청을 하시겠습니까?</Message>
                     <BtnSet>
                         <CloseBtn onClick={() => setIsOpen(false)}>닫기</CloseBtn>
-                        <CancleBtn onClick={() => {setIsOpen(false); alert("회수 요청 실행");/*티켓 취소 로직 실행*/}}>티켓 취소</CancleBtn>
+                        <CancleBtn onClick={() => {setIsOpen(false); alert("회수 요청 실행");/*티켓 취소 로직 실행*/}}>회수 요청</CancleBtn>
                     </BtnSet>
                 </ModalContent>
             </Modal>
