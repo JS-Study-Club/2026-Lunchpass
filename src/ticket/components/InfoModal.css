@@ -1,21 +1,23 @@
 #blur {
   width: 390px;
   height: 844px;
+  fill: rgba(0, 0, 0, 0.5);
+  opacity: 1;
   background-color: #00000080;
+
   position: absolute;
   z-index: 1;
 }
 .Modal {
   width: 350px;
   height: 466px;
-  background-color: #fff;
+  border-radius: 10px;
+  background: #f9f9ff;
   overflow: hidden;
   position: relative;
 
-  top: 187px;
+  top: 189px;
   left: 20px;
-  right: 20px;
-  bottom: 191px;
 }
 
 /* head */
@@ -24,34 +26,44 @@
   height: 48px;
   position: relative;
 }
-.head span {
-  color: #000;
-  text-align: center;
+.high-frame {
+  width: 310px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+.high-frame span {
+  color: #1a1a1f;
   font-size: 16px;
   font-weight: 500;
-
-  position: absolute;
-  top: 19px;
-  left: 21px;
+  text-align: center;
 }
-.head button {
+.high-frame button {
+  width: 20px;
+  height: 20px;
   padding: 10px;
   border: none;
-  background-color: rgb(0, 0, 0, 0);
+  background-color: transparent;
 
-  position: absolute;
-  top: 9px;
-  left: 292px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
-.head button img {
-  width: 16px;
-  height: 16px;
+.high-frame img {
+  width: 12px;
+  height: 12px;
 }
-.head hr {
-  width: 315.849px;
-  height: 1px;
-  background: #000;
+.dividing_line {
+  width: 316px;
+  height: 2px;
+  background-color: #9b9baa;
+  opacity: 0.5;
   position: absolute;
-  top: 48px;
-  left: 18px;
+  top: 49px;
+  left: 17px;
 }
