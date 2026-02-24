@@ -11,7 +11,6 @@ function Ticket_success() {
 
     useEffect(() => {setDate(todayDOW())},[]);
     
-
     return (
         <Main>
             <BackBtn/>
@@ -73,7 +72,6 @@ const Main = styled.div`
   
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
   
   display: flex;
   flex-direction: column;
@@ -81,7 +79,6 @@ const Main = styled.div`
 
   overflow: hidden;
   user-select: none;
-
 `;
 
 const Success = styled.div`
@@ -120,7 +117,7 @@ const SubMessage = styled.span`
 const Info = styled.div`
   position: absolute;
   bottom: 0;
-  height: 38.3%;
+  height: 33.6%;
   width: 100%;
 
   background-color: #F2F2F8;
