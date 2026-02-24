@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import SuccessIcon from "./assets/success_icon.svg";
 import BackButton from "./assets/back_button.svg";
-
-import "./Ticket_success.css";
 
 function Ticket_success() {
     const [date, setDate] = useState('날짜');
@@ -14,32 +13,31 @@ function Ticket_success() {
     
 
     return (
-        <div className='Main'>
+        <Main>
             <BackBtn/>
-            <div id='success'>
-                <img src={SuccessIcon} alt="성공아이콘" id='successIcon'/>
-                <span id='successMesssage'>예매 성공!</span>
-                <span id='subMessage'>티켓을 성공적으로 예매하였습니다</span>
-            </div>
-            <div id='info'>
-                <div id='infoText'>
-                    <div className='dateNtime'>
-                        <span>사용가능 날짜</span>
-                        <span className='info_em'>{date}</span>
-                    </div>
-                    <div className='dateNtime'>
-                        <span>조식/석식</span>
-                        <span className='info_em'>{time}</span>
-                    </div>
-                    
-                </div>
-            </div>
-            <div id='closeSet'>
-                <Link to="/loading" id='closeBtn'><span>닫기</span></Link>
-                <Link to="/myticket" id='closeText'><span>내 티켓으로 이동</span></Link>
-            </div>
-        </div>
-  );
+            <Success>
+                <SuccessImage src={SuccessIcon} alt="성공아이콘"/>
+                <SuccessMesssage>예매 성공!</SuccessMesssage>
+                <SubMessage>티켓을 성공적으로 예매하였습니다</SubMessage>
+            </Success>
+            <Info>
+                <InfoText>
+                    <DateNTime>
+                        <Span>사용가능 날짜</Span>
+                        <Info_em>{date}</Info_em>
+                    </DateNTime>
+                    <DateNTime>
+                        <Span>조식/석식</Span>
+                        <Info_em>{time}</Info_em>
+                    </DateNTime>
+                </InfoText>
+            </Info>
+            <CloseSet>
+                <CloseBtn to="/loading"><Span>닫기</Span></CloseBtn>
+                <CloseText to="/myticket"><Span>내 티켓으로 이동</Span></CloseText>
+            </CloseSet>
+        </Main>
+    );
 }
 
 function BackBtn() {
@@ -66,5 +64,130 @@ function todayDOW() {
     }
     return `오늘(${DOW})`;
 }
+
+const Main = styled.div`
+  width: 100%;
+  max-width: 390px;
+  
+  height: 100dvh;
+  
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9ff;
+
+  overflow: hidden;
+  user-select: none;
+
+`;
+
+const Success = styled.div`
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  margin: 0;
+`;
+const SuccessImage = styled.img`
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+`;
+const SuccessMesssage = styled.span`
+  font-family: Pretendard, -apple-system, sans-serif;
+  height: 27px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4566DE;
+  margin-bottom: 8px;
+`;
+const SubMessage = styled.span`
+  font-family: Pretendard, -apple-system, sans-serif;
+  font-size: 14px;
+  color: #7f7f7f;
+  font-weight: 400;
+`;
+
+const Info = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 38.3%;
+  width: 100%;
+
+  background-color: #F2F2F8;
+  border-radius: 39px 39px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 10.5%;
+
+`;
+const InfoText = styled.div`
+  font-size: 14px;
+  color: #bfbfbf;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 304px;
+  gap: 20px;
+`;
+const DateNTime = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`;
+const Span = styled.span`
+  font-family: Pretendard, -apple-system, sans-serif;
+`;
+const Info_em = styled.span`
+  font-family: Pretendard, -apple-system, sans-serif;
+  color: #a6a6a6;
+`;
+
+const CloseSet = styled.div`
+  position: absolute;
+  bottom: 7.6%;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  width: 350px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+`;
+const CloseBtn = styled(Link)`
+  text-decoration: none;
+
+  width: 100%;
+  height:55px;
+  background-color:#4566de;
+  border-radius:10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f9f9ff;
+  font-size: 17px;
+`;
+const CloseText = styled(Link)`
+  text-decoration: none;
+  font-size: 14px;
+  color: #7f7f7f;
+`;
 
 export default Ticket_success;
