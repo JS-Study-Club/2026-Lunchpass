@@ -37,7 +37,6 @@ const Main = styled.div`
   
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
   
   display: flex;
   flex-direction: column;
