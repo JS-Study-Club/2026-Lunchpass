@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Ticket_success from './Ticket_success.jsx';
-import Loading_page from './loading_page.jsx';
+import Loading_page from './Loading_page.jsx';
 import Waiting_page from './Waiting_page.jsx';
 
 function App() {
