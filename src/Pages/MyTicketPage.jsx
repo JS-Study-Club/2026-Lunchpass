@@ -8,7 +8,7 @@ export default function MyTicketPage(){
     return( 
         <>
             <BackContainer>
-                <BackButton src={BackImg} onClick={() => navigate("/")} style={{
+                <BackButton src={BackImg} onClick={() => navigate("/home")} style={{
                     heigth: 21
                 }}/>My 티켓
             </BackContainer>
