@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import backButton from '../../assets/back-icon.svg';
-import notification_icon from '../../assets/notification-icon.svg';
 import date_icon from '../../assets/date-icon.svg';
 import time_icon from '../../assets/time-icon.svg';
 
 import './Ticketing.css';
-import InfoModal from './InfoModal.jsx';
+// import InfoModal from './InfoModal.jsx';
 import FailPopup from './SoldOutPopup.jsx';
+import Tooltip from '../hooks/TicketTip.jsx';
 
-function Header({ setInfo }) {
+function Header() {
   return (
     <header>
       <div className="back_ticketing">
@@ -19,12 +19,7 @@ function Header({ setInfo }) {
       </div>
 
       <span className="question">날짜와 시간을 선택해주세요</span>
-
-      <button onClick={() => setInfo(true)} className="info-button">
-        <img src={notification_icon} alt="" />
-        <span className="white-text">티켓팅 정보</span>
-      </button>
-
+      <Tooltip />
       <div className="divider"></div>
     </header>
   );
@@ -39,8 +34,7 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
 
   const K_Day = ['일', '월', '화', '수', '목', '금', '토'];
   const [day, setDay] = useState(date.getDate());
-  const [week, setWeek] = useState(date.getDay() + 5);
-  const [hour, SetHour] = useState(date.getHours());
+  const [week, setWeek] = useState(date.getDay());
 
   function eventdisable(plus) {
     // 오늘 week, 내일 week+1 에서 +1을 위해 plus 인수 받기
@@ -164,6 +158,9 @@ function Foot({ setPopUp, pick_Btn, BFTicket, DinTicket }) {
   // 경우의 수는 오늘 조식(1), 오늘 석식(2), 내일 조식(3), 내일 석식(4) 총 4개
   const [pick, setPick] = useState(0);
 
+  // 18시 이후 오픈
+  const [hour, SetHour] = useState(new Date().getHours());
+
   function pickTicket() {
     if (pick_Btn[0] && pick_Btn[2]) {
       setPick(1); //오늘 조식
@@ -176,19 +173,26 @@ function Foot({ setPopUp, pick_Btn, BFTicket, DinTicket }) {
   return (
     <footer>
       <button
-        onClick={() => {
-          setPopUp(true);
-          console.log(pick_Btn);
-        }}
+        className={hour >= 18 ? '' : 'disableTicket'}
+        onClick={
+          hour >= 18
+            ? () => {
+                setPopUp(true);
+                console.log(pick_Btn);
+              }
+            : null
+        }
       >
-        <span className="FTitle">티켓팅하기</span>
+        <span className={hour >= 18 ? 'FTitle' : 'disable_text'}>
+          {hour >= 18 ? '티켓팅 하기' : '18:00부터 티켓팅 오픈'}
+        </span>
       </button>
     </footer>
   );
 }
 function Ticketing() {
   //티켓팅 정보창 띄우기 요ㅇ
-  const [info, setInfo] = useState(false);
+  // const [info, setInfo] = useState(false);
 
   //소진 팝업창
   const [popUp, setPopUp] = useState(false);
@@ -197,13 +201,13 @@ function Ticketing() {
   const [pick_Btn, setPick_Btn] = useState([false, false, false, false]);
 
   //DB에서 조식, 석식 티켓 수량 받아와서 state로 저장
-  const [BFTicket, setBFTicket] = useState(1);
+  const [BFTicket, setBFTicket] = useState(0);
   const [DinTicket, setDinTicket] = useState(0);
   return (
     <div id="ticketing">
-      {info ? <InfoModal setInfo={setInfo} /> : null}
+      {/* {info ? <InfoModal setInfo={setInfo} /> : null} */}
       {popUp ? <FailPopup setPopUp={setPopUp} /> : null}
-      <Header setInfo={setInfo} />
+      <Header />
       <Main
         pick_Btn={pick_Btn}
         setPick_Btn={setPick_Btn}
