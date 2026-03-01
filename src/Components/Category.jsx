@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { useState } from 'react';
 
-export default function Category(){
-    const [activeTab, setActiveTab] = useState('전체');
+export default function Category({setActiveTab, activeTab}){
     const categories=["전체", "조식", "석식"]
     return(
         <>
