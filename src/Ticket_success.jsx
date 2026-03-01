@@ -33,7 +33,7 @@ function Ticket_success() {
             </Info>
             <CloseSet>
                 <CloseBtn to="/loading"><Span>닫기</Span></CloseBtn>
-                <CloseText to="/myticket"><Span>내 티켓으로 이동</Span></CloseText>
+                <CloseText to={`/QRLanding/${date}/${time}`}><Span>내 티켓으로 이동</Span></CloseText>
             </CloseSet>
         </Main>
     );
@@ -55,13 +55,15 @@ function todayDOW() {
     const day = new Date();
     let DOW = '';
     switch(day.getDay()) {
+        case 0: DOW = '일'; break;
         case 1: DOW = '월'; break;
         case 2: DOW = '화'; break;
         case 3: DOW = '수'; break;
         case 4: DOW = '목'; break;
         case 5: DOW = '금'; break;
+        case 6: DOW = '토'; break;
     }
-    return `오늘(${DOW})`;
+    return `오늘 (${DOW})`;
 }
 
 const Main = styled.div`
@@ -83,7 +85,7 @@ const Main = styled.div`
 
 const Success = styled.div`
   position: absolute;
-  top: 27%;
+  top: 27.3%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -110,29 +112,28 @@ const SuccessMesssage = styled.span`
 const SubMessage = styled.span`
   font-family: Pretendard, -apple-system, sans-serif;
   font-size: 14px;
-  color: #7f7f7f;
+  color: #757580;
   font-weight: 400;
 `;
 
 const Info = styled.div`
   position: absolute;
   bottom: 0;
-  height: 33.6%;
+  height: 38.27%;
   width: 100%;
 
   background-color: #F2F2F8;
   border-radius: 39px 39px 0 0;
+  padding-top: 41px;
 
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding-top: 10.5%;
-
 `;
 const InfoText = styled.div`
   font-size: 14px;
-  color: #bfbfbf;
+  color: #c2c2d3;
 
   display: flex;
   flex-direction: column;
@@ -151,7 +152,7 @@ const Span = styled.span`
 `;
 const Info_em = styled.span`
   font-family: Pretendard, -apple-system, sans-serif;
-  color: #a6a6a6;
+  color: #9b9baa;
 `;
 
 const CloseSet = styled.div`
@@ -171,9 +172,9 @@ const CloseBtn = styled(Link)`
   text-decoration: none;
 
   width: 100%;
-  height:55px;
+  height: 55px;
   background-color:#4566de;
-  border-radius:10px;
+  border-radius: 10px;
 
   display: flex;
   justify-content: center;
@@ -182,9 +183,12 @@ const CloseBtn = styled(Link)`
   font-size: 17px;
 `;
 const CloseText = styled(Link)`
+  font-family: Pretendard, -apple-system, sans-serif;
   text-decoration: none;
+  
   font-size: 14px;
-  color: #7f7f7f;
+  font-weight: 400;
+  color: #757580;
 `;
 
 export default Ticket_success;
