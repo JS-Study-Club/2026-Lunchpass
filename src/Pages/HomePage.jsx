@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import lunch from "/assets/img/Lunch.svg"
 
 const BottomSpacer = styled.div`
-  height: 80px; // Menu의 높이와 동일하게 설정
+  height: 104px; // Menu의 높이와 동일하게 설정
 `;
 
 // 전체를 감싸는 컨테이너 (여백 관리 용이)

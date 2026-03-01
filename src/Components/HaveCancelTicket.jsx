@@ -73,7 +73,7 @@ const TicketBox=styled.div`
 
 const Ticket=styled.span`
     width:106px;
-    margin-right: 197px;
+    margin-right: 190px;
 `
 
 const QR=styled.span`
