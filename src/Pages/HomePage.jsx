@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import Lunch from "../Components/Lunch.jsx"
 import MyTicket from "../Components/MyTicket.jsx"
+import BackImg from "/assets/img/Back2.svg"
+import BackButton from "/assets/img/Back.svg"
+import { useNavigate } from "react-router-dom";
 
 const BottomSpacer = styled.div`
   height: 80px; // Menu의 높이와 동일하게 설정
@@ -54,7 +57,39 @@ const SubText = styled.p`
     color: #A6A6A6;
 `;
 
+const MyTicketContainer = styled.div`
+    width: 350px;
+`
+const Back = styled.img`
+    padding-top: 0px;
+`
+
+const MyTicketBoxContainer=styled.div`
+    height: 213px;
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(116, 116, 116, 0.2);
+    box-sizing: border-box;
+`
+
+const MyTicketInformationContainer=styled.div`
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 15px 0px;
+    height: 21px;
+`
+const MyTicketInformation = styled.span`
+    margin-right:226px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+    color: #2C2C2C;
+`
+
+
 export default function HomePage({username, commute}){
+    const navigate = useNavigate();
     return(
         <>
             <Container>
@@ -77,7 +112,19 @@ export default function HomePage({username, commute}){
             <div style={{
                 marginTop: 38
             }}>
-                <MyTicket Information={"My 티켓"} URL={"/myticket"} Selection={"Have"} IMG={"/assets/img/ticket2.svg"} />
+                <MyTicketContainer>
+                    <MyTicketInformationContainer>
+                        <img src={"/assets/img/ticket2.svg"} style={{
+                            marginRight: 10,
+                            display: "inline-block"
+                        }}/>
+                        <MyTicketInformation>{"My 티켓"}</MyTicketInformation>
+                        <Back src={BackButton} onClick={() => navigate("/myticket")}></Back>
+                    </MyTicketInformationContainer>
+                </MyTicketContainer>
+                <MyTicketBoxContainer>
+                    <MyTicket Selection={"Have"}/>
+                </MyTicketBoxContainer>
             </div>
             <BottomSpacer/>
         </>

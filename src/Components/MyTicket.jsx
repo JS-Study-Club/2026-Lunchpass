@@ -1,112 +1,64 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import BackButton from "/assets/img/Back.svg"
+
 import NoneTicket from "/assets/img/NoneTicket.svg"
+import { TicketDummy } from "../mocks/TicketDummy.js";
 
 import View_qr from "../Components/View_qr_M.jsx";
 import TicketCancle from "../Components/TicketCancle_M.jsx";
 import Retrieval from "./Retrieval_M.jsx";
 
-export default function MyTicket({Information, URL, Selection, IMG}){
-    const navigate = useNavigate();
+export default function MyTicket({Selection}){
     const [isOpen, setIsOpen] = useState(false);
-
+    const index=0;
+    if(!TicketDummy.HaveTicket){
+        /* 티켓이 없을 때 */
+        return(
+            <NoneTicketContainer src={NoneTicket}/>
+        )
+    }
     return(
         <>
-            <MyTicketContainer>
-                <MyTicketInformationContainer>
-                    <img src={IMG} style={{
-                        marginRight: 10,
-                        display: "inline-block"
-                    }}/>
-                    <MyTicketInformation>{Information}</MyTicketInformation>
-                    <Back src={BackButton} onClick={() => navigate(URL)}></Back>
-                </MyTicketInformationContainer>
-                <MyTicketBoxContainer>
-                    <MyTicketBoxFirst>
-                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                        <QR onClick={() => { setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL") }}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                    </MyTicketBoxFirst>
-                    <MyTicketBoxMiddle>
-                        <MyTicketText>{"12 / 01  (월)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                    </MyTicketBoxMiddle>
-                    <MyTicketBoxMiddle>
-                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"조식"}</MyTicketText>
-                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                    </MyTicketBoxMiddle>
-                    <MyTicketBoxLast>
-                        <MyTicketText>{"12 / 02  (화)"}&nbsp;&nbsp;{"석식"}</MyTicketText>
-                        <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
-                    </MyTicketBoxLast>
-                    {/* <NoneTicketContainer src={NoneTicket} /> */}
-                    {/* 티켓 없을 때 */}
-                </MyTicketBoxContainer>
-            </MyTicketContainer>
-            {
-                isOpen === "CANCLE" && (
-                    <TicketCancle setIsOpen={setIsOpen} />
-                )
-            }
-            {
-                isOpen === "VIEW_QR" && (
-                    <View_qr setIsOpen={setIsOpen}/>
-                )
-            }
-            {
-                isOpen === "RETRIEVAL" && (
-                    <Retrieval setIsOpen={setIsOpen}/>
-                )
-            }
-            
+        {TicketDummy.Tickets
+        .filter(ticket => Selection === "Have" ? !ticket.isCancel : ticket.isCancel)
+        .slice(0, 4)
+        .map((ticket) => {
+            const DateValue=`${ticket.date.month} / ${ticket.date.day}  (${ticket.date.dayofweek})`
+            const Meal = ticket.TicketType === "Breakfast" ? "조식" : "석식"
+             /* 티켓이 있을 때 */
+            return(
+                <>
+                        <MyTicketBox key={ticket.id} isLast={index === 3}>
+                            <MyTicketText>{DateValue}&nbsp;&nbsp;{Meal}</MyTicketText>
+                            <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
+                        </MyTicketBox>
+                </>
+            )
+        })}
+        {        
+            isOpen === "CANCLE" && (
+                <TicketCancle setIsOpen={setIsOpen} /> 
+            )
+        } 
+        {
+            isOpen === "VIEW_QR" && (
+                <View_qr setIsOpen={setIsOpen}/>
+            )
+        }
+        {
+            isOpen === "RETRIEVAL" && (
+                <Retrieval setIsOpen={setIsOpen}/>
+            )
+        }
         </>
-        
-    );
+    )
 }
 
-const MyTicketContainer = styled.div`
-    width: 350px;
-`
-const Back = styled.img`
-    padding-top: 0px;
-`
 
-const MyTicketBoxContainer=styled.div`
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 0px 5px 0px rgba(116, 116, 116, 0.2);
-    width: 350px;
-    height: 213px;
-`
 
-const MyTicketInformationContainer=styled.div`
-    display: flex;
-    align-items: center;
-    margin: 0px 0px 15px 0px;
-    height: 21px;
-`
-const MyTicketInformation = styled.span`
-    margin-right:226px;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: normal;
-    color: #2C2C2C;
-`
 
-const MyTicketBoxFirst = styled.div`
-    padding: 20px 0 17px 0;
-    width: 306px;
-    height: 54px;
-    margin: 0 22px;
-    border-radius: 10px 10px 0 0;
-    background-color: #F9F9FF;
-    box-sizing: content-box;
-    border-bottom: 1px solid #F1F2F5;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-`
-const MyTicketBoxMiddle = styled.div`
+const MyTicketBox = styled.div`
     padding: 17px 0 17px 0;
     width: 306px;
     height: 51px;
@@ -117,18 +69,10 @@ const MyTicketBoxMiddle = styled.div`
     display: flex;
     align-items: center;
     box-sizing: border-box;
-`
-const MyTicketBoxLast = styled.div`
-    padding: 17px 0 20px 0;
-    width: 306px;
-    height: 54px;
-    margin: 0 22px;
-    background-color: #F9F9FF;
-    border-radius : 0 0 10px 10px;
-    box-sizing: content-box;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
+
+    &:last-child {
+        border-bottom: none;
+    }
 `
 
 const MyTicketText=styled.span`
@@ -137,6 +81,7 @@ const MyTicketText=styled.span`
     font-size: 14px;
     font-weight: normal;
     width: 106px;
+    box-sizing: border-box;
 `
 
 const QR=styled.span`
@@ -144,9 +89,11 @@ const QR=styled.span`
     font-family: Pretendard;
     font-size: 14px;
     font-weight: normal;
-    color: #4566DE
+    color: #4566DE;
+    box-sizing: border-box;
 `
 
 const NoneTicketContainer=styled.img`
     margin: 59px 121px 0 121px;
+    box-sizing: border-box;
 `
