@@ -24,13 +24,13 @@ export default function MyTicket({Selection}){
         .filter(ticket => Selection === "Have" ? !ticket.isCancel : ticket.isCancel)
         .slice(0, 4)
         .map((ticket) => {
-            const DateValue=`${ticket.date.month} / ${ticket.date.day}  (${ticket.date.dayofweek})`
+            const DateValue=`${String(ticket.date.month).padStart(2, "0")} / ${String(ticket.date.day).padStart(2, "0")}`
             const Meal = ticket.TicketType === "Breakfast" ? "조식" : "석식"
              /* 티켓이 있을 때 */
             return(
                 <>
-                        <MyTicketBox key={ticket.id} isLast={index === 3}>
-                            <MyTicketText>{DateValue}&nbsp;&nbsp;{Meal}</MyTicketText>
+                        <MyTicketBox isLast={index === 3}>
+                            <MyTicketText>{DateValue}&nbsp;&nbsp;({ticket.date.dayofweek})&nbsp;&nbsp;{Meal}</MyTicketText>
                             <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                         </MyTicketBox>
                 </>
@@ -80,8 +80,8 @@ const MyTicketText=styled.span`
     font-family: Pretendard;
     font-size: 14px;
     font-weight: normal;
-    width: 106px;
     box-sizing: border-box;
+    width:106px;
 `
 
 const QR=styled.span`

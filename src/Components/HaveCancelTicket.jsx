@@ -33,13 +33,13 @@ export default function HaveCancelTicket({Selection, Category}){
         .filter(ticket => Selection === "Have" ? !ticket.isCancel : ticket.isCancel)
         .slice(0, 4)
         .map((ticket) => {
-            const DateValue=`${ticket.date.month} / ${ticket.date.day}  (${ticket.date.dayofweek})`
+            const DateValue=`${String(ticket.date.month).padStart(2, "0")} / ${String(ticket.date.day).padStart(2, "0")}`
             const Meal = ticket.TicketType === "Breakfast" ? "조식" : "석식"
              /* 티켓이 있을 때 */
             return(
                 <>
-                        <TicketBox key={ticket.id} isLast={index === 3}>
-                            <Ticket>{DateValue}&nbsp;&nbsp;{Meal}</Ticket>
+                        <TicketBox isLast={index === 3}>
+                            <Ticket>{DateValue}&nbsp;&nbsp;({ticket.date.dayofweek})&nbsp;&nbsp;{Meal}</Ticket>
                             <QR onClick={() => setIsOpen(Selection === "Have" ? "VIEW_QR" : "RETRIEVAL")}>{Selection === "Have" ? "QR 보기" : "회수 요청"}</QR>
                         </TicketBox>
                 </>
@@ -72,7 +72,8 @@ const TicketBox=styled.div`
 `
 
 const Ticket=styled.span`
-    margin-right: 183px;
+    width:106px;
+    margin-right: 197px;
 `
 
 const QR=styled.span`
