@@ -91,6 +91,10 @@ const QR=styled.span`
     font-weight: normal;
     color: #4566DE;
     box-sizing: border-box;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const NoneTicketContainer=styled.img`

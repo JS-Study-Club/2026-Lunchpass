@@ -67,12 +67,18 @@ const BackContainer = styled.span`
 `
 const BackPlace = styled.img`
     margin: 2px 8px 2px 0;
+    &:hover {
+        cursor: pointer;
+    }
 `
 const MyTicketContainer = styled.div`
     width: 350px;
 `
 const Back = styled.img`
     padding-top: 0px;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const MyTicketBoxContainer=styled.div`

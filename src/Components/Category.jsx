@@ -46,6 +46,10 @@ const CategoryItem=styled.div`
     background-color: #4566DE;
     border: none;
     }
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 const CategoryText=styled.span`
     margin: 0px 11px;

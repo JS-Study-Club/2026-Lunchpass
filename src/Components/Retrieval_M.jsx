@@ -65,6 +65,9 @@ const BtnSet = styled.div`
     padding: 0;
 
     gap: 10px;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 const CloseBtn = styled.button`
     width: 137px;
@@ -80,6 +83,9 @@ const CloseBtn = styled.button`
     font-size: 15px;
     font-weight: 500;
     color: #757580;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 const CancleBtn = styled.button`
     width: 137px;
@@ -95,6 +101,9 @@ const CancleBtn = styled.button`
     font-size: 15px;
     font-weight: 500;
     color: #f9f9ff;
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export default Retrieval;

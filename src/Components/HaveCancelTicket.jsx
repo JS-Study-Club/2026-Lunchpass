@@ -78,6 +78,9 @@ const Ticket=styled.span`
 
 const QR=styled.span`
     color: #4566DE;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const NoneTicketContainer=styled.img`

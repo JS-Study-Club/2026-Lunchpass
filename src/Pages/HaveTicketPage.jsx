@@ -46,5 +46,8 @@ const BackContainer = styled.span`
 `
 const BackButton = styled.img`
     margin: 2px 8px 2px 0;
+    &:hover {
+        cursor: pointer;
+    }
 `
 

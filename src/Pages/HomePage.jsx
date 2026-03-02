@@ -63,6 +63,9 @@ const MyTicketContainer = styled.div`
 `
 const Back = styled.img`
     padding-top: 0px;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const MyTicketBoxContainer=styled.div`
@@ -103,7 +106,6 @@ const LunchInformation = styled.span`
 `
 
 const LunchContainer = styled.div`
-    box-sizing: border-box;
     margin: 32px 0px 0px 0px;
     width: 350px;
     height: 229px;
