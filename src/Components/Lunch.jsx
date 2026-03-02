@@ -1,79 +1,73 @@
 import styled from "styled-components";
-import lunch from "/assets/img/Lunch.svg"
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function Lunch(){
-    const navigate=useNavigate()
+export default function Lunch({MMEAL_SC_CODE}){
+    const now = new Date();
+    const API_KEY="5883a36288fc474c9acc91fa9fe906f4";
+    const year = now.getFullYear();      
+    const month = now.getMonth() + 1;   
+    const date = now.getDate();       
+    const [lunchData, setLunchData] = useState([]);
+    
+    useEffect(() => {
+        
+        const formattedDate = `${year}${String(month).padStart(2, "0")}${String(date).padStart(2, "0")}`;
+        const apiUrl = `https://open.neis.go.kr/hub/mealServiceDietInfo?Key=${API_KEY}&Type=json&ATPT_OFCDC_SC_CODE=B10&SD_SCHUL_CODE=7011569&MLSV_YMD=${formattedDate}&MMEAL_SC_CODE=${MMEAL_SC_CODE}`;
+
+        fetch(apiUrl)
+            .then(res => res.json())
+            .then(result => {
+                if (result.mealServiceDietInfo) {
+                    const rawMenu = result.mealServiceDietInfo[1].row[0].DDISH_NM;
+                    const cleanMenuArray = rawMenu
+                        .split("<br/>")
+                        .map(item => item.replace(/\s?\([\d.]+\)/g, "").trim());
+
+                    setLunchData(cleanMenuArray);
+                } else {
+                    setLunchData([]); // 데이터 없으면 빈 배열로 확실히 초기화
+                }
+            })
+            .catch(() => {
+                setLunchData([]);
+            });
+    }, [MMEAL_SC_CODE]); // 식사 코드가 바뀔 때만 재호출
 
     return(
-        <LunchContainer>
-            <LunchInformationContainer>
-                <img src={lunch} style={{
-                    marginRight: 10,
-                    display: "inline-block"
-                }}/>
-                <LunchInformation>오늘의 급식</LunchInformation>
-            </LunchInformationContainer>
-            <BoxContainer>
-                <BreakfastBox>
-                    <Text>조식</Text>
+        <>
+        <DinnerBox style={{marginRight: MMEAL_SC_CODE === "3" ? "0px" : "10px"}}>
+            
+            {lunchData.length > 0 ? (
+                <>
+                    <Text>{MMEAL_SC_CODE === "1" ? "조식" : "석식"}</Text>
                     <MenuContainer>
-                        <MenuText>맛있는 푸딩</MenuText>
-                        <MenuText>달달한 푸딩</MenuText>
-                        <MenuText>굉장한 푸딩</MenuText>
-                        <MenuText>푸딩</MenuText>
+                        {lunchData.map((item, index) => (
+                            <MenuText key={index}>{item}</MenuText>
+                        ))}
                     </MenuContainer>
-                </BreakfastBox>
-                <DinnerBox>
-                    <Text>석식</Text>
-                    <MenuContainer>
-                        <MenuText>맛있는 푸딩</MenuText>
-                        <MenuText>달달한 푸딩</MenuText>
-                        <MenuText>굉장한 푸딩</MenuText>
-                        <MenuText>푸딩</MenuText>
-                    </MenuContainer>
-                </DinnerBox>
-            </BoxContainer>
-        </LunchContainer>
-    )
+                </>
+            ) : 
+                <div style={{ display: "flex", margin: "64px 31px 0 31px"}}>
+                    <img 
+                        margin="0"
+                        src={MMEAL_SC_CODE === "1" ? "/assets/img/NoneBreakfast.svg" : "/assets/img/NoneDinner.svg"} 
+                        alt="급식 정보 없음" 
+                    />
+                </div>
+            }
+        </DinnerBox>
+        </>
+    );
 }
-const LunchInformationContainer=styled.div`
-    display: flex;
-    align-items: center;
-    margin: 0px 0px 10px 0px;
-    height: 21px;
-`
-const LunchInformation = styled.span`
-    margin-right:225px;
-    font-family: Pretendard;
-    font-size: 16px;
-    font-weight: normal;
-`
 
-const LunchContainer = styled.div`
-    margin: 32px 0px 0px 0px;
-    width: 350px;
-    height: 229px;
-`
-const BoxContainer=styled.div`
-    display: flex;
-    // flex-direction: colum;
-`
-const BreakfastBox=styled.div`
-    margin-right: 10px;
-    width: 170px;
-    height: 200px;
-    background-color: #E9E9E9;
-    border-radius: 10px;
-    padding-left:15px;;
-`
+
 const DinnerBox=styled.div`
-    margin-right: 0px;
+    box-sizing: border-box;
     width: 170px;
     height: 200px;
-    background-color: #E9E9E9;
+    background-color: #F2F2F8;
     border-radius: 10px;
-    padding-left:15px;
+    box-sizing: border-box;
 `
 
 const Text=styled.p`
@@ -81,9 +75,12 @@ const Text=styled.p`
     font-family: Pretendard;
     font-weight: 500;
     color: #1A1A1F;
+    margin-left:15px;
 `
 const MenuContainer=styled.div`
     margin-top: 11px;
+    margin-left:15px;
+    margin-right: 11px;
 `
 
 const MenuText=styled.div`

@@ -1,9 +1,13 @@
 import styled from "styled-components"
 import Lunch from "../Components/Lunch.jsx"
 import MyTicket from "../Components/MyTicket.jsx"
+import BackImg from "/assets/img/Back2.svg"
+import BackButton from "/assets/img/Back.svg"
+import { useNavigate } from "react-router-dom";
+import lunch from "/assets/img/Lunch.svg"
 
 const BottomSpacer = styled.div`
-  height: 80px; // Menu의 높이와 동일하게 설정
+  height: 104px; // Menu의 높이와 동일하게 설정
 `;
 
 // 전체를 감싸는 컨테이너 (여백 관리 용이)
@@ -54,7 +58,69 @@ const SubText = styled.p`
     color: #A6A6A6;
 `;
 
+const MyTicketContainer = styled.div`
+    width: 350px;
+`
+const Back = styled.img`
+    padding-top: 0px;
+    &:hover {
+        cursor: pointer;
+    }
+`
+
+const MyTicketBoxContainer=styled.div`
+    height: 213px;
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(116, 116, 116, 0.2);
+    box-sizing: border-box;
+`
+
+const MyTicketInformationContainer=styled.div`
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 15px 0px;
+    height: 21px;
+`
+const MyTicketInformation = styled.span`
+    margin-right:226px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+    color: #2C2C2C;
+`
+
+const LunchInformationContainer=styled.div`
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+    height: 21px;
+`
+const LunchInformation = styled.span`
+    margin-right:225px;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-weight: normal;
+    
+`
+
+const LunchContainer = styled.div`
+    margin: 32px 0px 0px 0px;
+    width: 350px;
+    height: 229px;
+    box-sizing: border-box;
+`
+
+const BoxContainer=styled.div`
+    display: flex;
+    // flex-direction: colum;
+    box-sizing: border-box;
+`
+
+
 export default function HomePage({username, commute}){
+    const navigate = useNavigate();
     return(
         <>
             <Container>
@@ -73,11 +139,35 @@ export default function HomePage({username, commute}){
                 {/* 두 번째 줄: 티켓 안내 */}
                 <SubText>오늘 사용할 수 있는 티켓이 있어요!</SubText>
             </Container>
-            <Lunch />
+            <LunchContainer>   
+                <LunchInformationContainer>
+                    <img src={lunch} style={{
+                        marginRight: 10,
+                        display: "inline-block"
+                    }}/>
+                    <LunchInformation>오늘의 급식</LunchInformation>
+                </LunchInformationContainer>
+                <BoxContainer>
+                    <Lunch MMEAL_SC_CODE="1"/>
+                    <Lunch MMEAL_SC_CODE="3"/>
+                </BoxContainer> 
+            </LunchContainer>
             <div style={{
                 marginTop: 38
             }}>
-                <MyTicket Information={"My 티켓"} URL={"/myticket"} Selection={"Have"} IMG={"/assets/img/ticket2.svg"} />
+                <MyTicketContainer>
+                    <MyTicketInformationContainer>
+                        <img src={"/assets/img/ticket2.svg"} style={{
+                            marginRight: 10,
+                            display: "inline-block"
+                        }}/>
+                        <MyTicketInformation>{"My 티켓"}</MyTicketInformation>
+                        <Back src={BackButton} onClick={() => navigate("/myticket")}></Back>
+                    </MyTicketInformationContainer>
+                </MyTicketContainer>
+                <MyTicketBoxContainer>
+                    <MyTicket Selection={"Have"}/>
+                </MyTicketBoxContainer>
             </div>
             <BottomSpacer/>
         </>
