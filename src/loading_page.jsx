@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import loading_icon from "./assets/loading_icon.svg";
-import BackButton from "./assets/back_button.svg";
+import loading_icon from "/assets/img/loading_icon.svg";
+import BackButton from "/assets/img/back_button.svg";
 
 function Loading_page() {
     return (
@@ -48,7 +48,7 @@ const Main = styled.div`
 
 const Loading = styled.div`
   position: absolute;
-  top: 42.9%;
+  top: 429%;
   left: 50%;
   transform: translateX(-50%);
 

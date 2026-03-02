@@ -1,0 +1,30 @@
+.tooltip {
+  padding: 0 !important;
+  width: 258px !important;
+  height: 73px !important;
+
+  border-radius: 7px !important;
+  opacity: 0.6 !important;
+  background: #3f3f46 !important;
+
+  top: 196px !important;
+  left: 26px !important;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tooltip .react-tooltip-arrow {
+  width: 18px !important;
+  height: 20px !important;
+  left: 34px !important;
+}
+.tooltip-text {
+  width: 227px;
+  height: 48px;
+  color: #fff;
+  font-size: 13px;
+  font-style: normal;
+  line-height: normal;
+}

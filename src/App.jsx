@@ -1,5 +1,6 @@
 import {Routes, Route} from "react-router-dom"
-
+import Ticketing from './ticket/components/Ticketing.jsx';
+import './App.css';
 import Layout from "./Layout.jsx"
 import HomePage from "./Pages/HomePage.jsx"
 import MyTicketPage from "./Pages/MyTicketPage.jsx"
@@ -18,6 +19,7 @@ export default function App(){
         <Route path="/myticket/cancelticketpage" element={<CancelTicketPage />} />
         <Route path="/myticket/haveticketpage" element={<HaveTicketPage />} />
       </Route>
+      <Route path="/ticketing" element={<Ticketing />}/>
       <Route path="/" element={<Ticket_success/>}/>
       <Route path="/loading" element={<Loading_page/>}/>
       <Route path="/waiting" element={<Waiting_page/>}/>

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import SuccessIcon from "./assets/success_icon.svg";
-import BackButton from "./assets/back_button.svg";
+import SuccessIcon from "/assets/img/success_icon.svg";
+import BackButton from "/assets/img/back_button.svg";
 
 function Ticket_success() {
     const [date, setDate] = useState('날짜');

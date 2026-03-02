@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c5fd3a3ec37dcfe0bb1bfc99fd17522f3e574384
 # Logs
 logs
 *.log
@@ -23,6 +26,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
 =======
 # Created by https://www.toptal.com/developers/gitignore/api/react
 # Edit at https://www.toptal.com/developers/gitignore?templates=react
@@ -45,3 +49,5 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react
 >>>>>>> 501e48f9d286f91c72a2f18cc63030fff9d072d7
+=======
+>>>>>>> c5fd3a3ec37dcfe0bb1bfc99fd17522f3e574384

@@ -1,7 +1,7 @@
 import "./Menu.css";
-import homeIcon from './assets/home.svg';
-import ticket from './assets/ticket.svg';
-import mydata from './assets/mydata.svg';
+import homeIcon from '/assets/img/home.svg';
+import ticket from '/assets/img/ticket.svg';
+import mydata from '/assets/img/mydata.svg';
 
 function Menu() {
   return (

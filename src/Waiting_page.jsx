@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import styled, { keyframes } from 'styled-components';   
 
-import hourglass from "./assets/hourglass_icon.svg";
-import BackButton from "./assets/back_button.svg";
+import hourglass from "/assets/img/hourglass_icon.svg";
+import BackButton from "/assets/img/back_button.svg";
 
 function Waiting_page() {
     const [watingP, setWatingP] = useState(28);
