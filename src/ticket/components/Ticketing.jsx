@@ -24,21 +24,121 @@ const MainContainer = styled.div`
   overflow: hidden;
   user-select: none;
 `;
+
+const Back_Ticketing = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+
+  position: absolute;
+  top: 84px;
+  left: 20px;
+`;
+
+const Back_Btn = styled.button`
+  width: 12px;
+  height: 24px;
+  aspect-ratio: 1/2;
+  border: none;
+  background-color: transparent;
+`;
+const Question = styled.span`
+  width: 196px;
+  color: #1a1a1f;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+
+  position: absolute;
+  top: 138px;
+  left: 20px;
+`;
+
+const Divider = styled.div`
+  width: 100vw;
+  height: 8px;
+  background: #f2f2f8;
+  position: absolute;
+  top: 214px;
+`;
+
+const Date_Time_Section = styled.div`
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+
+  position: relative;
+  top: 30px;
+  left: 20px;
+`;
+
+const Date_Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+`;
+
+const Main_Tag = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+`;
+
+const Main_Tag_Img = styled.img`
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1/1;
+`;
+
+const Main_Tag_Span = styled.span`
+  color: #1a1a1f;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+const Date_Choice = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  align-self: stretch;
+`;
+
+const Time_Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+`;
+
+const Time_choice = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+`;
+
 function Header() {
   return (
     <header>
-      <div className="back_ticketing">
+      <Back_Ticketing>
         <Link to="/">
-          <button onClick={() => console.log(1)} className="back-btn">
+          <Back_Btn onClick={() => console.log(1)}>
             <img src={backButton} alt="backButton-svg" />
-          </button>
+          </Back_Btn>
         </Link>
-        <p>티켓팅</p>
-      </div>
+        <p className="back-ticketing">티켓팅</p>
+      </Back_Ticketing>
 
-      <span className="question">날짜와 시간을 선택해주세요</span>
+      <Question>날짜와 시간을 선택해주세요</Question>
       <Tooltip />
-      <div className="divider"></div>
+      <Divider></Divider>
     </header>
   );
 }
@@ -78,14 +178,14 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
   }
   return (
     <main>
-      <div className="date_time-section">
-        <section className="date-section">
-          <div className="main-tag">
-            <img src={date_icon} alt="" />
-            <span>날짜 선택</span>
-          </div>
+      <Date_Time_Section>
+        <Date_Section>
+          <Main_Tag>
+            <Main_Tag_Img src={date_icon} alt="" />
+            <Main_Tag_Span>날짜 선택</Main_Tag_Span>
+          </Main_Tag>
 
-          <div className="date-choice">
+          <Date_Choice className="date-choice">
             <button
               onClick={eventdisable(0) ? null : () => eventPick(0)}
               className={`btn date-btn ${eventdisable(0) ? "disable_btn" : pick_Btn[0] ? "select_btn " : ""}`}
@@ -130,15 +230,15 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
                 {K_Day[(week + 1) % 7]})
               </span>
             </button>
-          </div>
-        </section>
-        <section className="time-section">
-          <div className="main-tag">
-            <img src={time_icon} alt="" />
-            <span>시간 선택</span>
-          </div>
+          </Date_Choice>
+        </Date_Section>
+        <Time_Section>
+          <Main_Tag>
+            <Main_Tag_Img src={time_icon} alt="" />
+            <Main_Tag_Span>시간 선택</Main_Tag_Span>
+          </Main_Tag>
 
-          <div className="time-choice">
+          <Time_choice>
             <button
               onClick={() => eventPick(2)}
               className={`btn time-btn ${pick_Btn[2] ? "select_btn " : ""}`}
@@ -167,9 +267,9 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
                 잔여 {DinTicket}장
               </p>
             </button>
-          </div>
-        </section>
-      </div>
+          </Time_choice>
+        </Time_Section>
+      </Date_Time_Section>
     </main>
   );
 }
