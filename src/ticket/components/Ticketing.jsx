@@ -11,20 +11,20 @@ import Tooltip from '../hooks/TicketTip.jsx';
 
 function Header() {
   return (
-    <header>
-      <div className="back_ticketing">
-        <Link to="/home">
-          <button onClick={() => console.log(1)} className="back-btn">
-          <img src={backButton} alt="backButton-svg" />
-          </button>
-        </Link>
-        <p>티켓팅</p>
-      </div>
+      <header>
+        <div className="back_ticketing">
+          <Link to="/home">
+            <button onClick={() => console.log(1)} className="back-btn">
+            <img src={backButton} alt="backButton-svg" />
+            </button>
+          </Link>
+          <p>티켓팅</p>
+        </div>
 
-      <span className="question">날짜와 시간을 선택해주세요</span>
-      <Tooltip />
-      <div className="divider"></div>
-    </header>
+        <span className="question">날짜와 시간을 선택해주세요</span>
+        <Tooltip />
+        <div className="divider"></div>
+      </header>
   );
 }
 function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
