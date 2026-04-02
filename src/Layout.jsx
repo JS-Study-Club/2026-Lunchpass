@@ -13,8 +13,8 @@ const SiteContainer = styled.div`
   width: 100%;
   max-width: 390px;
   margin: 0 auto;
+  min-height: 844px;
   background-color: #f9f9ff;
-  min-height: 100vh;
   padding: 84px 20px 34px 20px;
   box-sizing: border-box;
   overflow-x: hidden;

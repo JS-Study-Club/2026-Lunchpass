@@ -1,5 +1,5 @@
-import closeButton from '/assets/img/close-button.svg';
-import './InfoModal.css';
+import closeButton from "/assets/img/close-button.svg";
+import "./InfoModal.css";
 
 function InfoModal({ setInfo }) {
   return (

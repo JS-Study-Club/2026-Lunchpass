@@ -1,32 +1,48 @@
-import { useEffect, useState } from 'react';
-import backButton from '/assets/img/back-icon.svg';
-import date_icon from '/assets/img/date-icon.svg';
-import time_icon from '/assets/img/time-icon.svg';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import backButton from "/assets/img/back-icon.svg";
+import date_icon from "/assets/img/date-icon.svg";
+import time_icon from "/assets/img/time-icon.svg";
+import { Link } from "react-router-dom";
 
-import './Ticketing.css';
+import "./Ticketing.css";
 // import InfoModal from './InfoModal.jsx';
-import FailPopup from './SoldOutPopup.jsx';
-import Tooltip from '../hooks/TicketTip.jsx';
+import FailPopup from "./SoldOutPopup.jsx";
+import Tooltip from "../hooks/TicketTip.jsx";
+import styled from "styled-components";
 
+const MainContainer = styled.div`
+  width: 100%;
+  max-width: 390px;
+
+  margin: 0 auto;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9ff;
+
+  overflow: hidden;
+  user-select: none;
+`;
 function Header() {
   return (
-      <header>
-        <div className="back_ticketing">
-          <Link to="/home">
-            <button onClick={() => console.log(1)} className="back-btn">
+    <header>
+      <div className="back_ticketing">
+        <Link to="/">
+          <button onClick={() => console.log(1)} className="back-btn">
             <img src={backButton} alt="backButton-svg" />
-            </button>
-          </Link>
-          <p>티켓팅</p>
-        </div>
+          </button>
+        </Link>
+        <p>티켓팅</p>
+      </div>
 
-        <span className="question">날짜와 시간을 선택해주세요</span>
-        <Tooltip />
-        <div className="divider"></div>
-      </header>
+      <span className="question">날짜와 시간을 선택해주세요</span>
+      <Tooltip />
+      <div className="divider"></div>
+    </header>
   );
 }
+
 function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
   const date = new Date();
   const MonthLastDay = new Date(
@@ -35,7 +51,7 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
     0,
   ).getDate();
 
-  const K_Day = ['일', '월', '화', '수', '목', '금', '토'];
+  const K_Day = ["일", "월", "화", "수", "목", "금", "토"];
   const [day, setDay] = useState(date.getDate());
   const [week, setWeek] = useState(date.getDay());
 
@@ -72,21 +88,21 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
           <div className="date-choice">
             <button
               onClick={eventdisable(0) ? null : () => eventPick(0)}
-              className={`btn date-btn ${eventdisable(0) ? 'disable_btn' : pick_Btn[0] ? 'select_btn ' : ''}`}
+              className={`btn date-btn ${eventdisable(0) ? "disable_btn" : pick_Btn[0] ? "select_btn " : ""}`}
             >
               <span
                 className={
                   eventdisable(0)
-                    ? 'disable_text'
+                    ? "disable_text"
                     : pick_Btn[0]
-                      ? 'select_text'
-                      : ''
+                      ? "select_text"
+                      : ""
                 }
               >
                 오늘
               </span>
               <span
-                className={`grayText ${eventdisable(0) ? 'disable_text' : pick_Btn[0] ? 'select_text' : ''}`}
+                className={`grayText ${eventdisable(0) ? "disable_text" : pick_Btn[0] ? "select_text" : ""}`}
               >
                 {day}일 ({K_Day[week]})
               </span>
@@ -94,21 +110,21 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
 
             <button
               onClick={eventdisable(1) ? null : () => eventPick(1)}
-              className={`btn date-btn ${eventdisable(1) ? 'disable_btn' : pick_Btn[1] ? 'select_btn ' : ''}`}
+              className={`btn date-btn ${eventdisable(1) ? "disable_btn" : pick_Btn[1] ? "select_btn " : ""}`}
             >
               <span
                 className={
                   eventdisable(1)
-                    ? 'disable_text'
+                    ? "disable_text"
                     : pick_Btn[1]
-                      ? 'select_text'
-                      : ''
+                      ? "select_text"
+                      : ""
                 }
               >
                 내일
               </span>
               <span
-                className={`grayText ${eventdisable(1) ? 'disable_text' : pick_Btn[1] ? 'select_text' : ''}`}
+                className={`grayText ${eventdisable(1) ? "disable_text" : pick_Btn[1] ? "select_text" : ""}`}
               >
                 {day + 1 > MonthLastDay ? 1 : day + 1}일 (
                 {K_Day[(week + 1) % 7]})
@@ -125,29 +141,29 @@ function Main({ pick_Btn, setPick_Btn, BFTicket, DinTicket }) {
           <div className="time-choice">
             <button
               onClick={() => eventPick(2)}
-              className={`btn time-btn ${pick_Btn[2] ? 'select_btn ' : ''}`}
+              className={`btn time-btn ${pick_Btn[2] ? "select_btn " : ""}`}
             >
-              <span className={pick_Btn[2] ? 'select_text' : ''}>조식</span>
+              <span className={pick_Btn[2] ? "select_text" : ""}>조식</span>
               <span
-                className={`grayText ${pick_Btn[2] ? 'select_text' : 'grayText'}`}
+                className={`grayText ${pick_Btn[2] ? "select_text" : "grayText"}`}
               >
                 07 : 30 ~
               </span>
-              <p className={BFTicket == 0 ? 'zero_ticket' : null}>
+              <p className={BFTicket == 0 ? "zero_ticket" : null}>
                 잔여 {BFTicket}장
               </p>
             </button>
             <button
               onClick={() => eventPick(3)}
-              className={`btn time-btn ${pick_Btn[3] ? 'select_btn ' : ''}`}
+              className={`btn time-btn ${pick_Btn[3] ? "select_btn " : ""}`}
             >
-              <span className={pick_Btn[3] ? 'select_text' : ''}>석식</span>
+              <span className={pick_Btn[3] ? "select_text" : ""}>석식</span>
               <span
-                className={`grayText ${pick_Btn[3] ? 'select_text' : 'grayText'}`}
+                className={`grayText ${pick_Btn[3] ? "select_text" : "grayText"}`}
               >
                 17 : 20 ~
               </span>
-              <p className={DinTicket == 0 ? 'zero_ticket' : null}>
+              <p className={DinTicket == 0 ? "zero_ticket" : null}>
                 잔여 {DinTicket}장
               </p>
             </button>
@@ -176,7 +192,7 @@ function Foot({ setPopUp, pick_Btn, BFTicket, DinTicket }) {
   return (
     <footer>
       <button
-        className={hour >= 18 ? '' : 'disableTicket'}
+        className={hour >= 18 ? "" : "disableTicket"}
         onClick={
           hour >= 18
             ? () => {
@@ -186,8 +202,8 @@ function Foot({ setPopUp, pick_Btn, BFTicket, DinTicket }) {
             : null
         }
       >
-        <span className={hour >= 18 ? 'FTitle' : 'disable_text'}>
-          {hour >= 18 ? '티켓팅 하기' : '18:00부터 티켓팅 오픈'}
+        <span className={hour >= 18 ? "FTitle" : "disable_text"}>
+          {hour >= 18 ? "티켓팅 하기" : "18:00부터 티켓팅 오픈"}
         </span>
       </button>
     </footer>
@@ -207,23 +223,25 @@ function Ticketing() {
   const [BFTicket, setBFTicket] = useState(0);
   const [DinTicket, setDinTicket] = useState(0);
   return (
-    <div id="ticketing">
-      {/* {info ? <InfoModal setInfo={setInfo} /> : null} */}
-      {popUp ? <FailPopup setPopUp={setPopUp} /> : null}
-      <Header />
-      <Main
-        pick_Btn={pick_Btn}
-        setPick_Btn={setPick_Btn}
-        BFTicket={BFTicket}
-        DinTicket={DinTicket}
-      />
-      <Foot
-        setPopUp={setPopUp}
-        pick_Btn={pick_Btn}
-        BFTicket={BFTicket}
-        DinTicket={DinTicket}
-      />
-    </div>
+    <MainContainer>
+      <div id="ticketing">
+        {/* {info ? <InfoModal setInfo={setInfo} /> : null} */}
+        {popUp ? <FailPopup setPopUp={setPopUp} /> : null}
+        <Header />
+        <Main
+          pick_Btn={pick_Btn}
+          setPick_Btn={setPick_Btn}
+          BFTicket={BFTicket}
+          DinTicket={DinTicket}
+        />
+        <Foot
+          setPopUp={setPopUp}
+          pick_Btn={pick_Btn}
+          BFTicket={BFTicket}
+          DinTicket={DinTicket}
+        />
+      </div>
+    </MainContainer>
   );
 }
 
